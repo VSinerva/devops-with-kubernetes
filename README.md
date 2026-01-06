@@ -6,4 +6,4 @@ Repository for the University of Helsinki DevOps with Kubernetes course https://
 
 ### Chapter 2
 
-- TODO
+- [1.1](https://github.com/VSinerva/devops-with-kubernetes/tree/1.1/log_output)

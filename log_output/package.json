@@ -1,0 +1,7 @@
+{
+  "name": "log_output",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
