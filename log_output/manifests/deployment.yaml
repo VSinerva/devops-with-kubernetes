@@ -1,17 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hashgenerator-dep
+  name: log-output-dep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hashgenerator
+      app: log-output
   template:
     metadata:
       labels:
-        app: hashgenerator
+        app: log-output
     spec:
       containers:
-        - name: hashgenerator
-          image: vsinerva/log_output@sha256:d3c12ecd38b7dd7290e530a2618568f158b695395f9ededad5530f18e9528da8
+        - name: log-output
+          image: vsinerva/log_output@sha256:ad6637bc27d9682e80cf4ccdca3129cda7aa70ca2d500131698694b3d568fbf7
+          env:
+            - name: PORT
+              value: "3000"

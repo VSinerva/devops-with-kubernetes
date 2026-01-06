@@ -8,6 +8,8 @@
       bg = cmd: "${pkgs.coreutils-full}/bin/nohup ${cmd} 1>/dev/null 2>&1 &";
       bruno-bg = pkgs.writeScriptBin "br" (bg "${pkgs.bruno}/bin/bruno");
       firefox-bg = pkgs.writeScriptBin "ff" (bg "${pkgs.firefox-devedition}/bin/firefox-devedition");
+      freelens-bg = pkgs.writeScriptBin "fl" (bg "${pkgs.freelens-bin}/bin/freelens");
+      init-cluster = pkgs.writeScriptBin "init-cluster" "${pkgs.k3d}/bin/k3d cluster create --port 8082:30080@agent:0 -p 8081:80@loadbalancer --agents 2";
     in
     {
       # Utilized by `nix develop`
@@ -19,12 +21,13 @@
             cacert
             kubectl
             k3d
-            freelens-bin
             docker
           ])
           ++ [
             bruno-bg
             firefox-bg
+            freelens-bg
+            init-cluster
           ];
         # Enable auto-complete with `source <(kubectl completion zsh)`
         shellHook = ''
