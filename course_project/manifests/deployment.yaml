@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-project-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course-project
+  template:
+    metadata:
+      labels:
+        app: course-project
+    spec:
+      containers:
+        - name: todo-backend
+          image: vsinerva/todo_app@sha256:8581f91037154087266db440922b6546c2200ccabbfc6e89e372376d1544c951

@@ -1,3 +1,3 @@
 # TODO app
 
-Deploy imperatively with `kubectl create deployment todo-dep --image=vsinerva/todo_app`
+Deploy with `kubectl apply -f manifests/deployment.yaml`
