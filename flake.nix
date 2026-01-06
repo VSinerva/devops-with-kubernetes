@@ -14,14 +14,19 @@
       devShell.${system} = pkgs.mkShell {
         buildInputs =
           (with pkgs; [
-            nodejs_22
+            nodejs_24
             openssl
             cacert
+            kubectl
+            k3d
+            freelens-bin
+            docker
           ])
           ++ [
             bruno-bg
             firefox-bg
           ];
+        # Enable auto-complete with `source <(kubectl completion zsh)`
         shellHook = ''
           exec zsh
         '';
