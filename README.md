@@ -13,3 +13,4 @@ Repository for the University of Helsinki DevOps with Kubernetes course https://
 - [1.5](https://github.com/VSinerva/devops-with-kubernetes/tree/1.5/course_project)
 - [1.6](https://github.com/VSinerva/devops-with-kubernetes/tree/1.6/course_project)
 - [1.7](https://github.com/VSinerva/devops-with-kubernetes/tree/1.7/log_output)
+- [1.8](https://github.com/VSinerva/devops-with-kubernetes/tree/1.8/course_project)
