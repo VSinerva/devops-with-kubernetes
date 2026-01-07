@@ -2,4 +2,4 @@
 
 Deploy with `kubectl apply -f manifests`
 
-Reachable via `http://localhost:8081`
+Reachable via http://localhost:8081

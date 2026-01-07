@@ -2,4 +2,4 @@
 
 Deploy with `kubectl apply -f manifests`
 
-Reachable via `http://localhost:8081/api/status`
+Reachable via http://localhost:8081/api/status
