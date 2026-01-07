@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      volumes:
+        - name: shared-image
+          emptyDir: {}
+      containers:
+        - name: log-response
+          image: vsinerva/log-response@sha256:5feb8d81830cac92b0381667d8bd4b89212cd9e55e63d0e902b6cd0d6c6cb13e
+          volumeMounts:
+            - name: shared-image
+              mountPath: /src/app/data
+          env:
+            - name: PORT
+              value: "3000"
+        - name: log-writer
+          image: vsinerva/log-writer@sha256:807cb7776e42dca8313c68c0c1b1110f876aee42e5e3207200c30251544b8bf9
+          volumeMounts:
+            - name: shared-image
+              mountPath: /src/app/data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pingpong-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pingpong
+  template:
+    metadata:
+      labels:
+        app: pingpong
+    spec:
+      containers:
+        - name: pingpong
+          image: vsinerva/pingpong@sha256:77e2e995c0354cbf0bfff34c9e5a9b5be206ff7f5a95365fbc959ccad53a0281
+          env:
+            - name: PORT
+              value: "3000"

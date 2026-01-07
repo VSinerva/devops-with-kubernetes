@@ -1,5 +1,5 @@
 {
-  "name": "pingpong",
+  "name": "todo-app",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -7,7 +7,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "dotenv": "^17.2.3",
     "express": "^5.2.1"
   },
   "devDependencies": {
