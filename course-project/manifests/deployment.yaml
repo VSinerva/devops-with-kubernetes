@@ -12,9 +12,18 @@ spec:
       labels:
         app: course-project
     spec:
+      volumes:
+        - name: todo-volume
+          persistentVolumeClaim:
+            claimName: todo-claim
       containers:
-        - name: todo-backend
-          image: vsinerva/todo_app@sha256:8581f91037154087266db440922b6546c2200ccabbfc6e89e372376d1544c951
+        - name: todo-app
+          image: vsinerva/todo-app@sha256:5884c5b0b779472676da2654336de114f34ddd4faa9328b7dd76028e101ec2a8
+          volumeMounts:
+            - name: todo-volume
+              mountPath: /src/app/data
           env:
             - name: PORT
               value: "3000"
+            - name: FILE_PATH
+              value: "/src/app/data/image.jpg"
