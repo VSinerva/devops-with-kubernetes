@@ -18,7 +18,7 @@ spec:
             claimName: todo-claim
       containers:
         - name: todo-app
-          image: vsinerva/todo-app@sha256:5884c5b0b779472676da2654336de114f34ddd4faa9328b7dd76028e101ec2a8
+          image: vsinerva/todo-app@sha256:b9e4aefb6355a5aa5a111c978d5467d6af862525a343dbfcec225b33517f6be1
           volumeMounts:
             - name: todo-volume
               mountPath: /src/app/data
