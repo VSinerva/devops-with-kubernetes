@@ -13,21 +13,22 @@ spec:
         app: log-output
     spec:
       volumes:
-        - name: shared-image
-          emptyDir: {}
+        - name: shared-log
+          persistentVolumeClaim:
+            claimName: log-output-claim
       containers:
         - name: log-response
           image: vsinerva/log-response@sha256:5feb8d81830cac92b0381667d8bd4b89212cd9e55e63d0e902b6cd0d6c6cb13e
           volumeMounts:
-            - name: shared-image
+            - name: shared-log
               mountPath: /src/app/data
           env:
             - name: PORT
               value: "3000"
         - name: log-writer
-          image: vsinerva/log-writer@sha256:807cb7776e42dca8313c68c0c1b1110f876aee42e5e3207200c30251544b8bf9
+          image: vsinerva/log-writer@sha256:b7e658c3b92877f681f2e977e1b9699c762f340d131ab2533938a6fa80d1d783
           volumeMounts:
-            - name: shared-image
+            - name: shared-log
               mountPath: /src/app/data
 ---
 apiVersion: apps/v1
@@ -44,9 +45,16 @@ spec:
       labels:
         app: pingpong
     spec:
+      volumes:
+        - name: shared-log
+          persistentVolumeClaim:
+            claimName: log-output-claim
       containers:
         - name: pingpong
-          image: vsinerva/pingpong@sha256:77e2e995c0354cbf0bfff34c9e5a9b5be206ff7f5a95365fbc959ccad53a0281
+          image: vsinerva/pingpong@sha256:7a177156e6118604b0e055e88aca2aea0d29fdd35e3d7f0cc1ff0a7eb911f9c7
+          volumeMounts:
+            - name: shared-log
+              mountPath: /src/app/data
           env:
             - name: PORT
               value: "3000"

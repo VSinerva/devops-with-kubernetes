@@ -4,13 +4,22 @@ const string = crypto.randomUUID()
 
 const logString = () => {
   const time = new Date()
-  const content = `${time.toISOString()}: ${string}`
 
-  fs.writeFile('/src/app/data/log.txt', content, err => {
+  fs.readFile('/src/app/data/pingpong.txt', 'utf8', (err, ping) => {
     if (err) {
       console.error(err)
     } else {
-      console.log(content)
+      const content =`
+${time.toISOString()}: ${string}<br>
+Ping / Pongs: ${ping}`
+
+      fs.writeFile('/src/app/data/log.txt', content, err => {
+        if (err) {
+          console.error(err)
+        } else {
+          console.log(content)
+        }
+      })
     }
   })
 

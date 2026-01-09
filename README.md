@@ -2,6 +2,8 @@
 
 Repository for the University of Helsinki DevOps with Kubernetes course https://courses.mooc.fi/org/uh-cs/courses/devops-with-kubernetes
 
+Create the required `k3d` cluster with the appropriate port mappings with `k3d cluster create --port 8082:30080@agent:0 -p 8081:80@loadbalancer --agents 2`
+
 ## Exercises
 
 ### Chapter 2
@@ -16,3 +18,4 @@ Repository for the University of Helsinki DevOps with Kubernetes course https://
 - [1.8](https://github.com/VSinerva/devops-with-kubernetes/tree/1.8/course_project)
 - [1.9](https://github.com/VSinerva/devops-with-kubernetes/tree/1.9/pingpong)
 - [1.10](https://github.com/VSinerva/devops-with-kubernetes/tree/1.10/log-output)
+- [1.11](https://github.com/VSinerva/devops-with-kubernetes/tree/1.11/log-output)

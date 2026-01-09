@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cluster-pv-0
+spec:
+  storageClassName: cluster-pv-0
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /tmp/kube
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k3d-k3s-default-agent-0
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cluster-pv-1
+spec:
+  storageClassName: cluster-pv-1
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  local:
+    path: /tmp/kube
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k3d-k3s-default-agent-0
