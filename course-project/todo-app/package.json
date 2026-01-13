@@ -3,8 +3,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "npm run build && node --watch index.js",
+    "dev": "npm run build:dev && DEV_PROXY=1 node --watch index.js",
     "build": "vite build",
+    "build:dev": "vite build --mode 'development' --watch &",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "eslint": "^9.39.2",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "express-http-proxy": "^2.1.2",
     "globals": "^17.0.0",
     "vite": "^7.2.4"
   }

@@ -18,7 +18,7 @@ spec:
             claimName: todo-claim
       containers:
         - name: todo-app
-          image: vsinerva/todo-app@sha256:b9e4aefb6355a5aa5a111c978d5467d6af862525a343dbfcec225b33517f6be1
+          image: vsinerva/todo-app@sha256:4179e2e53cdf39b9df5132a585e4b899143b8d4114f0e4a32c5612a9f6953382
           volumeMounts:
             - name: todo-volume
               mountPath: /src/app/data
@@ -27,3 +27,8 @@ spec:
               value: "3000"
             - name: FILE_PATH
               value: "/src/app/data/image.jpg"
+        - name: todo-backend
+          image: vsinerva/todo-backend@sha256:94cf0b9a78c0227fea655dd5bf8f66ebc919830e18a411f533f9a6fb1d5fd2b3
+          env:
+            - name: PORT
+              value: "3002"
