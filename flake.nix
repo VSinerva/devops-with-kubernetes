@@ -21,6 +21,7 @@
             openssl
             cacert
             kubectl
+            kubectx
             k3d
             docker
           ])
