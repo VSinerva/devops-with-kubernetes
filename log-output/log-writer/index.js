@@ -1,31 +1,32 @@
 const fs = require('fs')
 const axios = require('axios')
-const FILE_PATH = process.env.FILE_PATH || '../log.txt'
+const MESSAGE = process.env.MESSAGE || ''
+const INFORMATION_FILE_PATH = process.env.INFORMATION_FILE_PATH || '../information.txt'
+const LOG_FILE_PATH = process.env.LOG_FILE_PATH || '../log.txt'
 const PING_URL = process.env.PING_URL || 'http://localhost:3001/pings'
 
-const string = crypto.randomUUID()
+const uuid = crypto.randomUUID()
 
-const logString = () => {
+const logString = async () => {
   const time = new Date()
 
-  axios.get(PING_URL)
-    .then(response => {
-      const ping = response.data
-      const content =`
-${time.toISOString()}: ${string}<br>
+  try {
+    const response = await axios.get(PING_URL)
+
+    const fileData = fs.readFileSync(INFORMATION_FILE_PATH, 'utf8')
+
+    const ping = response.data
+    const content =`
+file content: ${fileData}<br>
+env variable: MESSAGE=${MESSAGE}<br>
+${time.toISOString()}: ${uuid}<br>
 Ping / Pongs: ${ping}`
 
-      fs.writeFile(FILE_PATH, content, err => {
-        if (err) {
-          console.error(err)
-        } else {
-          console.log(content)
-        }
-      })
-    })
-    .catch(error => {
-      console.error(error)
-    })
+    fs.writeFileSync(LOG_FILE_PATH, content)
+    console.log(content)
+  } catch (error) {
+    console.error(error)
+  }
 
   setTimeout(logString, 5000)
 }

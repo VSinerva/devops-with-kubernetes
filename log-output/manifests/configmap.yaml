@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: log-output-config
+  namespace: exercises
+data:
+  LOG_PORT: "3000"
+  PING_PONG_PORT: "3000"
+
+  LOG_FILE_PATH: "/src/app/data/log.txt"
+  INFORMATION_FILE_PATH: "/src/app/config/information.txt"
+  PING_URL: "http://pingpong-svc:2345/pings"
+
+  MESSAGE: "hello world"
+
+  information.txt: |
+    this text is from file

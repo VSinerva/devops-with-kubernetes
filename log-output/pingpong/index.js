@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3001
+const PING_PONG_PORT = process.env.PING_PONG_PORT || 3001
 
 let counter = 0
 
@@ -15,6 +15,6 @@ app.get('/pings', (request, response) => {
   console.log(`pings: ${counter}`)
 })
 
-app.listen(PORT, () => {
-  console.log(`Server started in port ${PORT}`)
+app.listen(PING_PONG_PORT, () => {
+  console.log(`Server started in port ${PING_PONG_PORT}`)
 })

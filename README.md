@@ -28,3 +28,4 @@ Create the required `k3d` cluster with the appropriate port mappings with `k3d c
 - [2.2](https://github.com/VSinerva/devops-with-kubernetes/tree/2.2/course-project)
 - [2.3](https://github.com/VSinerva/devops-with-kubernetes/tree/2.3/log-output)
 - [2.4](https://github.com/VSinerva/devops-with-kubernetes/tree/2.4/course-project)
+- [2.5](https://github.com/VSinerva/devops-with-kubernetes/tree/2.5/log-output)
