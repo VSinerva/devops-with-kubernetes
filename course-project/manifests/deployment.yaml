@@ -19,17 +19,15 @@ spec:
             claimName: todo-claim
       containers:
         - name: todo-app
-          image: vsinerva/todo-app@sha256:4179e2e53cdf39b9df5132a585e4b899143b8d4114f0e4a32c5612a9f6953382
+          image: vsinerva/todo-app@sha256:f9a2382d887f987e0c0a8f3d5488d4668315fa719dadefee720458e58aae5fca
           volumeMounts:
             - name: todo-volume
               mountPath: /src/app/data
-          env:
-            - name: PORT
-              value: "3000"
-            - name: FILE_PATH
-              value: "/src/app/data/image.jpg"
+          envFrom:
+            - configMapRef:
+                name: course-project-config
         - name: todo-backend
-          image: vsinerva/todo-backend@sha256:94cf0b9a78c0227fea655dd5bf8f66ebc919830e18a411f533f9a6fb1d5fd2b3
-          env:
-            - name: PORT
-              value: "3002"
+          image: vsinerva/todo-backend@sha256:e940009c00cb8da28450f9d1cfed8540bc7db5d5855e6830759c200d73ca0f08
+          envFrom:
+            - configMapRef:
+                name: course-project-config

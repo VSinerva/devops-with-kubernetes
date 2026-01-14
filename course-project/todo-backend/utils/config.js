@@ -1,3 +1,3 @@
-const PORT = process.env.PORT || 3002
+const BACKEND_PORT = process.env.BACKEND_PORT || 3002
 
-module.exports = { PORT }
+module.exports = { BACKEND_PORT }
